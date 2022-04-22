@@ -1,5 +1,7 @@
 # SmartTerminal
 
+* <b>1.0.0.4 - 22/04/22</b>
+1. BluetoothHelper. Дела с подключениями, списками подключенных, поиск и т.д и т.п.
 * <b>1.0.0.3 - 22/04/22</b>
 1. exceptions/, modbus/, util/, SearchDeviceDialog
 * <b>1.0.0.2 - 22/04/22</b>

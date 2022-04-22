@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
             fragment = TerminalFragment.newInstance();
             manager.beginTransaction().add(R.id.fragment_container, fragment).commit();
         }
+
+        mViewModel.IsBTConnected().observe(this, aBoolean ->
+                Log.e(TAG, "onChanged: BT_STATE: "+aBoolean));
 
         if (savedInstanceState == null) check();
     }
@@ -86,6 +90,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-//        mViewModel.startBluetooth(this);
+        mViewModel.startBluetooth(this);
     }
 }

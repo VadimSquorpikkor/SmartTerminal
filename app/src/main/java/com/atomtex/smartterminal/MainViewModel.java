@@ -16,11 +16,16 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isDiscovering;
     private final MutableLiveData<Boolean>  isBtSearch;
 
+    private final MutableLiveData<Boolean>  isBtConnected;
+
+    private BluetoothHelper bluetoothHelper;
+
     public MainViewModel() {
         this.btPairedDeviceList = new MutableLiveData<>();
         this.btFoundDeviceList  = new MutableLiveData<>();
         this.isDiscovering      = new MutableLiveData<>(false);
         this.isBtSearch         = new MutableLiveData<>(false);
+        isBtConnected       = new MutableLiveData<>(false);
     }
 
 //---------------------- BLUETOOTH -----------------------------------------------------------------
@@ -30,11 +35,15 @@ public class MainViewModel extends ViewModel {
     public void startBluetoothSearch() {
         Log.e("TAG", "startBluetoothSearch: ");
         getIsBtSearch().postValue(true);
-        disconnect();
-//        bluetoothHelper.setNameFilter("BTDU", "BT-DU", "AT6101DR", "SQUORPIKKOR", "X6_BLE");
-//        bluetoothHelper.queryPairedDevices();
-//        bluetoothHelper.showDeviceLog();
-//        bluetoothHelper.startDiscovery();
+        bluetoothHelper.disconnect();
+        bluetoothHelper.setNameFilter("BTDU", "BT-DU", "AT6101DR", "SQUORPIKKOR", "X6_BLE");
+        bluetoothHelper.queryPairedDevices();
+        bluetoothHelper.showDeviceLog();
+        bluetoothHelper.startDiscovery();
+    }
+
+    public MutableLiveData<Boolean>     IsBTConnected() {
+        return isBtConnected;
     }
 
     public MutableLiveData<Boolean> getIsBtSearch() {
@@ -59,16 +68,17 @@ public class MainViewModel extends ViewModel {
     }
     /**Подключение к устройству bluetooth*/
     public void connectToDevice(BluetoothDevice device) {
-//        bluetoothHelper.connectToDevice(device, service);
+        bluetoothHelper.connectToDevice(device);
     }
     /**Подключение к последнему подключенному устройству*/
     public void startConnectToLastBTDevice() {
-//        if (bluetoothHelper!=null) bluetoothHelper.connectToLast(service);
+        if (bluetoothHelper!=null) bluetoothHelper.connectToLast();
     }
     /**Активация Bluetooth*/
     public void startBluetooth(Activity activity) {
-//        bluetoothHelper = new BluetoothHelper(activity, btPairedDeviceList, btFoundDeviceList);
-//        bluetoothHelper.setDiscoveryStartedListener(isDiscovering);
+        bluetoothHelper = new BluetoothHelper(activity, btPairedDeviceList, btFoundDeviceList, isBtSearch, isBtConnected);
+        bluetoothHelper.setDiscoveryStartedListener(isDiscovering);
+        startConnectToLastBTDevice();
     }
 
 
@@ -76,9 +86,7 @@ public class MainViewModel extends ViewModel {
 //        bluetoothHelper.cancelDiscovery();
     }
 
-    public void disconnect() {
-//        service.disconnect();
-    }
+
 
     public String getBluetoothDeviceName() {
 //        return bluetoothHelper.getDeviceName();
