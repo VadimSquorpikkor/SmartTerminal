@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    style="@style/vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp">
+    <LinearLayout style="@style/horizontal">
+
+        <Button android:id="@+id/button_1"
+            style="@style/ImageButton"
+            android:text="1"/>
+        <Button android:id="@+id/button_2"
+            style="@style/ImageButton"
+            android:text="2"/>
+        <Button android:id="@+id/button_3"
+            style="@style/ImageButton"
+            android:text="3"/>
+        <Button android:id="@+id/button_4"
+            style="@style/ImageButton"
+            android:text="4"/>
+        <Button android:id="@+id/button_5"
+            style="@style/ImageButton"
+            android:text="5"/>
+    </LinearLayout>
+    <LinearLayout style="@style/horizontal">
+        <Button android:id="@+id/button_6"
+            style="@style/ImageButton"
+            android:text="6"/>
+        <Button android:id="@+id/button_7"
+            style="@style/ImageButton"
+            android:text="7"/>
+        <Button android:id="@+id/button_8"
+            style="@style/ImageButton"
+            android:text="8"/>
+        <Button android:id="@+id/button_9"
+            style="@style/ImageButton"
+            android:text="9"/>
+        <Button android:id="@+id/button_a"
+            style="@style/ImageButton"
+            android:text="a"/>
+    </LinearLayout>
+    <LinearLayout style="@style/horizontal">
+        <Button android:id="@+id/button_b"
+            style="@style/ImageButton"
+            android:text="b"/>
+        <Button android:id="@+id/button_c"
+            style="@style/ImageButton"
+            android:text="c"/>
+        <Button android:id="@+id/button_d"
+            style="@style/ImageButton"
+            android:text="d"/>
+        <Button android:id="@+id/button_e"
+            style="@style/ImageButton"
+            android:text="e"/>
+        <Button android:id="@+id/button_f"
+            style="@style/ImageButton"
+            android:text="f"/>
+    </LinearLayout>
+    <LinearLayout style="@style/horizontal">
+        <Button android:id="@+id/button_0"
+            style="@style/ImageButton"
+            android:text="0"/>
+        <Button android:id="@+id/button_cl"
+            style="@style/ImageButton"
+            android:text="CL"/>
+        <ImageView android:id="@+id/button_save"
+            style="@style/ImageButton"
+            android:src="@drawable/custom_img_back"/>
+        <ImageView android:id="@+id/button_space"
+            style="@style/ImageButton"
+            android:src="@drawable/custom_img_space"/>
+        <Button android:id="@+id/button_enter"
+            style="@style/ImageButton"
+            android:text="Enter"/>
+    </LinearLayout>
+</LinearLayout>

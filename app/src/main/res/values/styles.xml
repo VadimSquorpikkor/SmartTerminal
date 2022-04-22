@@ -122,6 +122,31 @@
         <item name="android:textColor">?attr/customButtonTextColor</item>
         <item name="background">@drawable/button_shape_selector</item>
     </style>
+
+    <!--    и для imageView и для Button-->
+    <style name="ImageTextButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:background">@drawable/button_small_shape_selector</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?attr/customButtonTextColor</item>
+    </style>
+    <!--вариант для кнопок в ряд. Если на кнопке нужно изображение, используется ImageView и src, если
+    нужен текст ("Log"), то используется Button. При этом оба типа VIew при использовании вместе будут
+    одинаково смотрется (одинаковой высоты/ширины и т.д.). Если на кнопке надпись, она будет большими буквами
+    Пример использования:
+    <ImageView style="@style/ImageButton" android:src="@drawable/custom_img_save"/>
+    <Button style="@style/ImageButton" android:text="Lin"/>
+    -->
+    <style name="ImageButton" parent="ImageTextButton">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 <!--*********************************************************************************************-->
     <style name="RecyclerItem" parent="vertical_left">
         <item name="android:layout_marginBottom">3dp</item>
@@ -190,7 +215,7 @@
     </style>
 
     <style name="dialogLinearEdit">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/edit_text_field</item>
         <item name="android:paddingTop">4dp</item>
@@ -198,7 +223,7 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
         <item name="android:textSize">19sp</item>
-        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:gravity">center</item>
     </style>
 

@@ -5,12 +5,20 @@
       <map>
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_shape.xml" value="0.185" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_shape_selector.xml" value="0.356" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_small_shape.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_small_shape_pressed.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_small_shape_selector.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_back.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_save.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_space.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/edit_text_field.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1555" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/shape_main_background.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/side_nav_bar.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/side_nav_bar_dark.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
-        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_terminal.xml" value="0.24537037037037038" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/buttons.xml" value="0.33" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_terminal.xml" value="0.33" />
       </map>
     </option>
   </component>

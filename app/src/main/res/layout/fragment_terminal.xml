@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundOutside"
+    android:orientation="vertical"
+    android:padding="4dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_main_background"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/horizontal"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/button_save"
+                style="@style/ImageButton"
+                android:src="@drawable/custom_img_bluetooth" />
+
+        </LinearLayout>
+
+<!--        <TextView style="@style/dialogLinearEdit" />-->
+
+        <TextView style="@style/dialogLinearEdit" />
+
+        <TextView
+            android:id="@+id/iden_result"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="?attr/dialogBackground2"
+            android:fadeScrollbars="false"
+            android:minHeight="50dp"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            android:textSize="14dp"
+            tools:text=">> 50 04 00 0d 00 03" />
+
+        <include layout="@layout/buttons"/>
+
+
+    </LinearLayout>
+</LinearLayout>
