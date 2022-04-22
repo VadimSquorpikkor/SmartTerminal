@@ -1,0 +1,4 @@
+<resources>
+    <style name="Theme.SmartTerminal.Night" parent="Theme.SmartTerminal">
+    </style>
+</resources>
