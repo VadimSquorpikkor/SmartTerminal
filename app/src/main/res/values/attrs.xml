@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="backgroundColor" format="color"/>
+    <attr name="backgroundOutside" format="color"/>
+
+    <attr name="ordinaryTextColor" format="color"/>
+    <attr name="iconsColor" format="color"/>
+    <attr name="coloredText" format="color"/>
+
+    <attr name="recyclerItemColor" format="color"/>
+    <attr name="recyclerTextColor" format="color"/>
+    <attr name="recyclerDividerColor" format="color"/>
+
+    <attr name="customButton" format="color"/>
+    <attr name="customButtonImageColor" format="color"/>
+    <attr name="customButtonPressed" format="color"/>
+    <attr name="customButtonTextColor" format="color"/>
+
+    <attr name="tabColor" format="color"/>
+    <attr name="tabBigTextColor" format="color"/>
+    <attr name="tabIndicatorCustom" format="color"/>
+    <attr name="unselectedTabTextColor" format="color"/>
+    <attr name="selectedTabTextColor" format="color"/>
+    <attr name="TitleTextColor" format="color"/>
+
+    <attr name="dialogBackground" format="color"/>
+    <attr name="dialogBackground2" format="color"/>
+    <attr name="dialogTitleColor" format="color"/>
+    <attr name="dialogSmallTextColor" format="color"/>
+    <attr name="dialogBigTextTitleColor" format="color"/>
+    <attr name="dialogBigTextColor" format="color"/>
+<!--    <attr name="editBackground" format="color"/>-->
+
+    <attr name="navBarGradient" format="reference"/>
+    <attr name="navMenuBackground" format="color"/>
+    <attr name="menuTextColor" format="color"/>
+
+    <attr name="batteryColor" format="color"/>
+    <attr name="batteryColorCharge" format="color"/>
+    <attr name="batteryColorLow" format="color"/>
+    <attr name="batteryColorBg" format="color"/>
+
+    <attr name="aboutLogoImage" format="reference"/>
+
+    <attr name="panelOuterColor" format="color"/>
+    <attr name="panelInnerColor" format="color"/>
+
+    <attr name="specGraphColor" format="color"/>
+    <attr name="specLegendColor" format="color"/>
+    <attr name="SpectrumTextColor" format="color"/>
+    <attr name="spectrumNuclideLineColor" format="color"/>
+
+    <attr name="EditTextBackgroundColor" format="color"/>
+</resources>

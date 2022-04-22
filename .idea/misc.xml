@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_shape.xml" value="0.185" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_shape_selector.xml" value="0.356" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/edit_text_field.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1555" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/side_nav_bar.xml" value="0.356" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/side_nav_bar_dark.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_terminal.xml" value="0.24537037037037038" />
       </map>
