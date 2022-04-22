@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/RecyclerItem">
+
+    <TextView
+        android:id="@+id/dev_name"
+        style="@style/RecyclerItemTextBig"
+        tools:text="BTDU-03" />
+
+    <TextView
+        android:id="@+id/dev_address"
+        style="@style/RecyclerItemTextSmall"
+        tools:text="32-32-32-32-32" />
+
+</LinearLayout>
+
+
+
+

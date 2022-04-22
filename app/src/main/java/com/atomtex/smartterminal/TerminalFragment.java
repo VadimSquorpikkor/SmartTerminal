@@ -19,7 +19,14 @@ public class TerminalFragment extends Fragment {
    ) {
       View view = inflater.inflate(R.layout.fragment_terminal, container, false);
       MainViewModel mViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+      view.findViewById(R.id.button_search).setOnClickListener(v -> startSearch());
+
       return view;
+   }
+
+   private void startSearch() {
+      new SearchDeviceDialog().show(getParentFragmentManager(), null);
    }
 
 }

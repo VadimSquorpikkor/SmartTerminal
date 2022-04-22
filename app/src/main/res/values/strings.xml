@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SmartTerminal</string>
+
+    <string name="title_bluetooth_search">Поиск Bluetooth</string>
+
+    <string name="button_negative">Отмена</string>
+    <string name="button_positive">ОК</string>
+    <string name="button_close">Закрыть</string>
+    <string name="button_stop_search">Остановить</string>
+    <string name="button_start_search">Искать</string>
+    <string name="found_bluetooth">Найденные устройства</string>
+    <string name="paired_bluetooth">Ранее подключенные устройства</string>
 </resources>

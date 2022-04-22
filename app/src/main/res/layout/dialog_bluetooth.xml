@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/vertical"
+    android:background="?attr/dialogBackground">
+
+    <LinearLayout
+        style="@style/vertical"
+        android:background="?attr/dialogTitleColor">
+
+        <TextView
+            style="@style/H1_text_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_bluetooth_search" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/MyProgressBar"
+        />
+
+    <LinearLayout style="@style/vertical"
+        android:layout_weight="1">
+
+        <TextView
+            style="@style/mediumPrettyColoredText"
+            android:text="@string/found_bluetooth" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/found_list"
+            android:minHeight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp" />
+
+        <TextView
+            style="@style/mediumPrettyColoredText"
+            android:text="@string/paired_bluetooth" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/paired_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/horizontalCenter">
+
+        <Button
+            android:id="@+id/button_close"
+            android:text="@string/button_close"
+            android:layout_margin="10dp"
+            style="@style/CustomButton"
+            android:background="@drawable/button_shape_selector"
+            />
+
+        <Button
+            android:id="@+id/button_stop"
+            android:text="@string/button_stop_search"
+            android:layout_margin="10dp"
+            style="@style/CustomButton"
+            android:background="@drawable/button_shape_selector"
+            />
+
+        <Button
+            android:id="@+id/button_search"
+            android:text="@string/button_start_search"
+            android:layout_margin="10dp"
+            style="@style/CustomButton"
+            android:background="@drawable/button_shape_selector"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -20,7 +20,7 @@
             android:layout_margin="5dp">
 
             <ImageView
-                android:id="@+id/button_save"
+                android:id="@+id/button_search"
                 style="@style/ImageButton"
                 android:src="@drawable/custom_img_bluetooth" />
 
