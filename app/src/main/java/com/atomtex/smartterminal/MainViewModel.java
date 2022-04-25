@@ -20,6 +20,7 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isDiscovering;
     private final MutableLiveData<Boolean>  isBtSearch;
     private final MutableLiveData<Boolean>  isBtConnected;
+    private final MutableLiveData<Boolean>  isConnecting;
 
     private final MutableLiveData<String> requestText;
 //    private final MutableLiveData<String> response;
@@ -32,12 +33,11 @@ public class MainViewModel extends ViewModel {
         this.btPairedDeviceList = new MutableLiveData<>();
         this.btFoundDeviceList  = new MutableLiveData<>();
         this.isDiscovering      = new MutableLiveData<>(false);
+        this.isConnecting       = new MutableLiveData<>(false);
         this.isBtSearch         = new MutableLiveData<>(false);
         this.isBtConnected      = new MutableLiveData<>(false);
-        this.requestText = new MutableLiveData<>("");
-//        this.response           = new MutableLiveData<>("");
+        this.requestText        = new MutableLiveData<>("");
         this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
-//        this.response.observeForever(this::updateReceivingList);
     }
 
     public MutableLiveData<ArrayList<String>> getAllCommandsList() {
@@ -50,6 +50,9 @@ public class MainViewModel extends ViewModel {
         allCommandsList.setValue(list);
     }
 
+    public MutableLiveData<Boolean> getIsConnecting() {
+        return isConnecting;
+    }
     public BluetoothHelper getBluetoothHelper() {
         return bluetoothHelper;
     }
@@ -63,6 +66,7 @@ public class MainViewModel extends ViewModel {
     //0x50 0x04 0x00 0x0d 0x00 0x03
 
     public void sendCommand() {
+        if (stringCommand.equals("")||stringCommand.length()<5) return;
         updateReceivingList(">> "+requestText.getValue());
         byte[] byteCommand = HexTranslate.hexStringToByteArray(stringCommand);
         try {
@@ -81,8 +85,8 @@ public class MainViewModel extends ViewModel {
      * будут игнорироваться. Если ничего не выбрано — отображаются все найденные устройства*/
     public void startBluetoothSearch() {
         Log.e("TAG", "startBluetoothSearch: ");
-        getIsBtSearch().postValue(true);
         bluetoothHelper.disconnect();
+        getIsBtSearch().postValue(true);
 //        bluetoothHelper.setNameFilter("BTDU", "BT-DU", "AT6101DR", "SQUORPIKKOR", "X6_BLE");
         bluetoothHelper.queryPairedDevices();
         bluetoothHelper.showDeviceLog();
@@ -125,12 +129,13 @@ public class MainViewModel extends ViewModel {
     public void startBluetooth(Activity activity) {
         bluetoothHelper = new BluetoothHelper(activity, btPairedDeviceList, btFoundDeviceList, isBtSearch, isBtConnected);
         bluetoothHelper.setDiscoveryStartedListener(isDiscovering);
+        bluetoothHelper.setConnectingListener(isConnecting);
         startConnectToLastBTDevice();
     }
 
 
     public void stopBluetoothSearch() {
-//        bluetoothHelper.cancelDiscovery();
+        bluetoothHelper.cancelDiscovery();
     }
 
 

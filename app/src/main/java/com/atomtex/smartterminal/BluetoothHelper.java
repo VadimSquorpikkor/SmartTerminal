@@ -179,6 +179,12 @@ public class BluetoothHelper {
         mBroadcastReceiver.setDiscoveryStartedFlag(discoveryStartedFlag);
     }
 
+    MutableLiveData<Boolean> connectingFlag = new MutableLiveData<>();
+
+    public void setConnectingListener(MutableLiveData<Boolean> connectingFlag) {
+        this.connectingFlag = connectingFlag;
+    }
+
     /**Не забыть отключить ресивер (может при закрытии диалога поиска?)*/
     public void unregisterReceiver() {
         try {
@@ -258,6 +264,7 @@ public class BluetoothHelper {
         public void run() {
             boolean isConnected = false;
             while (!isConnected) {
+                connectingFlag.postValue(true);
                 isConnected = mAdapter.connect();
                 Log.e(TAG, "♦♦♦ isConnected: " + isConnected);
                 if (!isConnected) {
@@ -266,6 +273,7 @@ public class BluetoothHelper {
                     catch (InterruptedException e) {return;}
                 }
             }
+            connectingFlag.postValue(false);
             isBtConnected.postValue(true);
             isBtSearch.postValue(false);
             //todo ready();
@@ -380,6 +388,7 @@ public class BluetoothHelper {
                 discoveryStartedFlag.setValue(false);
             } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
                 Log.e(TAG, "onReceive: STARTED");
+                btFoundDeviceList.setValue(new ArrayList<>());
                 discoveryStartedFlag.setValue(true);
             }
         }
@@ -397,10 +406,10 @@ public class BluetoothHelper {
                 Log.e(TAG, "есть такой уже!");
                 return;
             }
-            if (isAvailableName(device.getName())) {
+//            if (isAvailableName(device.getName())) {
                 list.add(device);
                 btFoundDeviceList.setValue(list);
-            }
+//            }
         }
     }
 

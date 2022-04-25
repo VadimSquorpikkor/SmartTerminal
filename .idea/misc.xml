@@ -9,8 +9,15 @@
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_small_shape_pressed.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_small_shape_selector.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_back.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_bluetooth.xml" value="0.3195" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_day.xml" value="0.3195" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_night.xml" value="0.3195" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_open.xml" value="0.164" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_power.xml" value="0.3195" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_save.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_space.xml" value="0.219" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_vibro_off.xml" value="0.3195" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_vibro_on.xml" value="0.3195" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/edit_text_field.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1555" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/shape_main_background.xml" value="0.219" />
@@ -19,7 +26,7 @@
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/buttons.xml" value="0.33" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_bluetooth.xml" value="0.34923076923076923" />
-        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_terminal.xml" value="0.33" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_terminal.xml" value="0.25" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/item_bt_found.xml" value="0.34923076923076923" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/item_commands.xml" value="0.22" />
       </map>

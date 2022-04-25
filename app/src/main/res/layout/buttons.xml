@@ -2,7 +2,8 @@
 <LinearLayout
     style="@style/vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="5dp">
+    android:paddingHorizontal="5dp"
+    android:paddingBottom="5dp">
     <LinearLayout style="@style/horizontal">
 
         <Button android:id="@+id/button_1"
@@ -36,24 +37,24 @@
             android:text="9"/>
         <Button android:id="@+id/button_a"
             style="@style/ImageButton"
-            android:text="a"/>
+            android:text="A"/>
     </LinearLayout>
     <LinearLayout style="@style/horizontal">
         <Button android:id="@+id/button_b"
             style="@style/ImageButton"
-            android:text="b"/>
+            android:text="B"/>
         <Button android:id="@+id/button_c"
             style="@style/ImageButton"
-            android:text="c"/>
+            android:text="C"/>
         <Button android:id="@+id/button_d"
             style="@style/ImageButton"
-            android:text="d"/>
+            android:text="D"/>
         <Button android:id="@+id/button_e"
             style="@style/ImageButton"
-            android:text="e"/>
+            android:text="E"/>
         <Button android:id="@+id/button_f"
             style="@style/ImageButton"
-            android:text="f"/>
+            android:text="F"/>
     </LinearLayout>
     <LinearLayout style="@style/horizontal">
         <Button android:id="@+id/button_0"
@@ -61,7 +62,7 @@
             android:text="0"/>
         <Button android:id="@+id/button_cl"
             style="@style/ImageButton"
-            android:text="CL"/>
+            android:text="CLR"/>
         <ImageView android:id="@+id/button_back"
             style="@style/ImageButton"
             android:src="@drawable/custom_img_back"/>

@@ -1,5 +1,6 @@
 package com.atomtex.smartterminal;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -46,7 +47,8 @@ public class TerminalFragment extends Fragment {
       mViewModel.getAllCommandsList().observe(getViewLifecycleOwner(), adapter::setList);
 
       mViewModel.getRequestText().observe(getViewLifecycleOwner(), input::setText);
-      mViewModel.getIsBtSearch().observe(getViewLifecycleOwner(), this::showSearch);
+      mViewModel.getIsDiscovering().observe(getViewLifecycleOwner(), this::showDiscovering);
+      mViewModel.getIsConnecting().observe(getViewLifecycleOwner(), this::showConnecting);
       mViewModel.IsBTConnected().observe(getViewLifecycleOwner(), this::showConnected);
 
       view.findViewById(R.id.button_0).setOnClickListener(view1 -> addNumber("0"));
@@ -72,6 +74,15 @@ public class TerminalFragment extends Fragment {
 
 
       return view;
+   }
+
+   int count = 0;
+   @SuppressLint("SetTextI18n")
+   private void showConnecting(boolean state) {
+      if (state) {
+         count++;
+         name.setText("подключение... ["+count+"]");
+      } else count = 0;
    }
 
    private void clear() {
@@ -103,7 +114,7 @@ public class TerminalFragment extends Fragment {
       if (state) name.setText("Подключен "+mViewModel.getBluetoothHelper().getDeviceName());
    }
 
-   private void showSearch(boolean state) {
+   private void showDiscovering(boolean state) {
       if (state) name.setText("поиск...");
    }
 
