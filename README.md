@@ -1,4 +1,4 @@
-# SmartTerminal 1.0.0.4
+# SmartTerminal 1.0.0.5
 ###
 
 Особенности:

@@ -4,7 +4,6 @@ import static com.atomtex.smartterminal.App.TAG;
 
 import android.util.Log;
 
-import com.atomtex.smartterminal.BuildConfig;
 import com.atomtex.smartterminal.exception.ConnectingException;
 import com.atomtex.smartterminal.exception.DeviceException;
 import com.atomtex.smartterminal.exception.ResponseException;
@@ -83,10 +82,10 @@ public class Adapter extends com.atomtex.smartterminal.modbus.AbstractAdapter {
 
         //Log.e("TAG", "<<< "+Arrays.toString(responseMessage.getBuffer()));
 
-        if (BuildConfig.DEBUG) {
-            Log.e(TAG, "\nRequest " + Arrays.toString(requestMessage.getBuffer()) + "\n"
-                    + "Response " + Arrays.toString(responseMessage.getBuffer()));
-        }
+//        if (BuildConfig.DEBUG) {
+//            Log.e(TAG, "\nRequest " + Arrays.toString(requestMessage.getBuffer()) + "\n"
+//                    + "Response " + Arrays.toString(responseMessage.getBuffer()));
+//        }
         if (responseMessage.getBuffer() == null) {
             throw new ConnectingException("Connection lost while executing command 0x"
                     + Util.getHexString(requestMessage.getBuffer()[1]));

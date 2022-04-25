@@ -59,8 +59,8 @@ public class BluetoothHelper {
     private MutableLiveData<ArrayList<BluetoothDevice>> btFoundDeviceList;//todo возможно есть смысл заменить ArrayList на Set
     private ArrayList<String> availableNames;
 
-    private MutableLiveData<Boolean>  isBtSearch;
-    private MutableLiveData<Boolean>  isBtConnected;
+    private MutableLiveData<Boolean> isBtSearch;
+    private MutableLiveData<Boolean> isBtConnected;
     /**Девайс, к которому подключились (а не те устройства,которые видим в списках)*/
     private BluetoothDevice mDevice;
 
@@ -79,12 +79,11 @@ public class BluetoothHelper {
         this.btFoundDeviceList = btFoundDeviceList;
         checkBluetooth();
     }*/
-
     public BluetoothHelper(Activity activity,
                            MutableLiveData<ArrayList<BluetoothDevice>> btPairedDeviceList,
                            MutableLiveData<ArrayList<BluetoothDevice>> btFoundDeviceList,
-                           MutableLiveData<Boolean>  isBtSearch,
-                           MutableLiveData<Boolean>  isBtConnected) {
+                           MutableLiveData<Boolean> isBtSearch,
+                           MutableLiveData<Boolean> isBtConnected) {
         this.activity = activity;
         this.btPairedDeviceList = btPairedDeviceList;
         this.btFoundDeviceList = btFoundDeviceList;
@@ -144,13 +143,13 @@ public class BluetoothHelper {
         if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
             device.createBond();
         } else {
-            Log.e(TAG, "♣connectToDevice: "+device.getName());
+            Log.e(TAG, "♣connectToDevice: " + device.getName());
             connect(device);
         }
     }
 
     public void startDiscovery() {
-        if(bluetoothAdapter.isDiscovering()) bluetoothAdapter.cancelDiscovery();
+        if (bluetoothAdapter.isDiscovering()) bluetoothAdapter.cancelDiscovery();
         btFoundDeviceList = new MutableLiveData<>();//обнуление списка
         Log.e(TAG, "♦♦♦startDiscovery: ");
         bluetoothAdapter.startDiscovery();
@@ -239,7 +238,7 @@ public class BluetoothHelper {
 
     private Adapter mAdapter;
 
-    public Adapter getmAdapter() {
+    public Adapter getAdapter() {
         return mAdapter;
     }
 

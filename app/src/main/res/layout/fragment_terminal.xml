@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,9 +14,16 @@
         android:orientation="vertical">
 
 
+        <TextView
+            style="@style/text_small"
+            android:id="@+id/connected_name"
+            tools:text="подключено"
+            android:layout_marginHorizontal="10dp"
+            />
+
         <LinearLayout
             style="@style/horizontal"
-            android:layout_margin="5dp">
+            android:layout_marginHorizontal="5dp">
 
             <ImageView
                 android:id="@+id/button_search"
@@ -28,10 +34,18 @@
 
 <!--        <TextView style="@style/dialogLinearEdit" />-->
 
-        <TextView style="@style/dialogLinearEdit" />
+<!--        <TextView android:id="@+id/input" style="@style/dialogLinearEdit" />-->
+        <TextView android:id="@+id/input"
+            android:background="?attr/dialogBackground2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:textSize="12dp"
+            />
 
         <TextView
-            android:id="@+id/iden_result"
+            android:id="@+id/output"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
@@ -41,7 +55,7 @@
             android:minHeight="50dp"
             android:padding="5dp"
             android:scrollbars="vertical"
-            android:textSize="14dp"
+            android:textSize="12dp"
             tools:text=">> 50 04 00 0d 00 03" />
 
         <include layout="@layout/buttons"/>

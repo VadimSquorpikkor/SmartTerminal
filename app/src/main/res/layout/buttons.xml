@@ -62,7 +62,7 @@
         <Button android:id="@+id/button_cl"
             style="@style/ImageButton"
             android:text="CL"/>
-        <ImageView android:id="@+id/button_save"
+        <ImageView android:id="@+id/button_back"
             style="@style/ImageButton"
             android:src="@drawable/custom_img_back"/>
         <ImageView android:id="@+id/button_space"

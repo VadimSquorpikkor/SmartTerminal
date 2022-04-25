@@ -26,7 +26,10 @@ public class SearchDeviceDialog extends BaseDialog{
         initializeWithVM(R.layout.dialog_bluetooth);
 
         Button searchButton = view.findViewById(R.id.button_search);
-        searchButton.setOnClickListener(v->mViewModel.startBluetoothSearch());
+        searchButton.setOnClickListener(v-> {
+            mViewModel.startBluetoothSearch();
+            foundAdapter.setList(null);
+        });
         Button stopButton = view.findViewById(R.id.button_stop);
         stopButton.setOnClickListener(v->mViewModel.stopBluetoothSearch());
         Button closeButton = view.findViewById(R.id.button_close);
