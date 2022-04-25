@@ -1,14 +1,19 @@
 package com.atomtex.smartterminal;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.atomtex.smartterminal.adapter.CommandListAdapter;
 
 public class TerminalFragment extends Fragment {
 
@@ -17,7 +22,8 @@ public class TerminalFragment extends Fragment {
    }
    MainViewModel mViewModel;
    TextView name;
-   TextView output;
+   Vibrator vibe;
+   public static final int VIBE_TIME = 40;
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -25,15 +31,21 @@ public class TerminalFragment extends Fragment {
       View view = inflater.inflate(R.layout.fragment_terminal, container, false);
       mViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
+      vibe = (Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE);
+
       TextView input = view.findViewById(R.id.input);
-      output = view.findViewById(R.id.output);
+//      output = view.findViewById(R.id.output);
       name = view.findViewById(R.id.connected_name);
 
       view.findViewById(R.id.button_search).setOnClickListener(v -> startSearch());
 
+      RecyclerView recycler = view.findViewById(R.id.basic_nuc_recycler);
+      CommandListAdapter adapter = new CommandListAdapter();
+      recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+      recycler.setAdapter(adapter);
+      mViewModel.getAllCommandsList().observe(getViewLifecycleOwner(), adapter::setList);
 
       mViewModel.getRequestText().observe(getViewLifecycleOwner(), input::setText);
-      mViewModel.getResponse().observe(getViewLifecycleOwner(), this::addToOutput);
       mViewModel.getIsBtSearch().observe(getViewLifecycleOwner(), this::showSearch);
       mViewModel.IsBTConnected().observe(getViewLifecycleOwner(), this::showConnected);
 
@@ -53,28 +65,37 @@ public class TerminalFragment extends Fragment {
       view.findViewById(R.id.button_d).setOnClickListener(view1 -> addNumber("d"));
       view.findViewById(R.id.button_e).setOnClickListener(view1 -> addNumber("e"));
       view.findViewById(R.id.button_f).setOnClickListener(view1 -> addNumber("f"));
-      view.findViewById(R.id.button_cl).setOnClickListener(view1 -> mViewModel.clearText());
+      view.findViewById(R.id.button_cl).setOnClickListener(view1 -> clear());
       view.findViewById(R.id.button_back).setOnClickListener(view1 -> back());
-      view.findViewById(R.id.button_space).setOnClickListener(view1 -> space());
-      view.findViewById(R.id.button_enter).setOnClickListener(v -> mViewModel.sendCommand());
+      view.findViewById(R.id.button_mem).setOnClickListener(view1 -> memory());
+      view.findViewById(R.id.button_enter).setOnClickListener(v -> send());
 
 
       return view;
    }
 
-   private void addToOutput(String s) {
-      output.setText("<<"+s);
+   private void clear() {
+      vibe.vibrate(VIBE_TIME);
+      mViewModel.clearText();
    }
 
-   private void space() {
-      mViewModel.addNumber(" ");
+   private void send() {
+      vibe.vibrate(VIBE_TIME);
+      mViewModel.sendCommand();
+   }
+
+   private void memory() {
+      vibe.vibrate(VIBE_TIME);
+
    }
 
    private void back() {
+      vibe.vibrate(VIBE_TIME);
 
    }
 
    private void addNumber(String n) {
+      vibe.vibrate(VIBE_TIME);
       mViewModel.addNumber(n);
    }
 

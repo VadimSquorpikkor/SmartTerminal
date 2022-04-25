@@ -44,7 +44,15 @@
             android:textSize="12dp"
             />
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/basic_nuc_recycler"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:background="?attr/dialogBackground2"
+            android:layout_height="wrap_content" />
+
+        <!--<TextView
             android:id="@+id/output"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -56,7 +64,7 @@
             android:padding="5dp"
             android:scrollbars="vertical"
             android:textSize="12dp"
-            tools:text=">> 50 04 00 0d 00 03" />
+            tools:text=">> 50 04 00 0d 00 03" />-->
 
         <include layout="@layout/buttons"/>
 

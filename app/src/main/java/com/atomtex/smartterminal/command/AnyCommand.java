@@ -36,9 +36,7 @@ public abstract class AnyCommand extends AbstractCommand {
     private static final class AnyCommandHolder {
         private static final AnyCommand INSTANCE = new AnyCommand() {
             @Override
-            public void onResponse(byte[] response) {
-
-            }
+            public void onResponse(byte[] response) {}
         };
     }
 
@@ -47,14 +45,15 @@ public abstract class AnyCommand extends AbstractCommand {
     }
 
     public void method() throws ConnectingException, ResponseException {
-        ModbusMessage request = ModbusMessage.createModbusMessage(getData().length+2, getAddress(), getCommand(),
+        ModbusMessage request = ModbusMessage.createModbusMessage(getData()==null?2:getData().length+2, getAddress(), getCommand(),
                 getData(), getCRCOrder());
         Log.e("TAG", "FUCKING_SPECIAL_COMMAND: request "+ Arrays.toString(request.getBuffer()));
+        //getResponse().postValue(">> " + HexTranslate.byteArrayToHexString(request.getBuffer()));
 
         ModbusMessage response = getAdapter().sendMessageWithResponse(request);
         Log.e("TAG", "FUCKING_SPECIAL_COMMAND: response "+ Arrays.toString(response.getBuffer()));
 
-        getResponse().postValue(HexTranslate.byteArrayToHexString(response.getBuffer()));
+        //getResponse().postValue(HexTranslate.byteArrayToHexString(response.getBuffer()));
         onResponse(response.getBuffer());
     }
 

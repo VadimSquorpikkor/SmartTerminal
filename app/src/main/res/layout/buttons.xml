@@ -65,9 +65,9 @@
         <ImageView android:id="@+id/button_back"
             style="@style/ImageButton"
             android:src="@drawable/custom_img_back"/>
-        <ImageView android:id="@+id/button_space"
+        <Button android:id="@+id/button_mem"
             style="@style/ImageButton"
-            android:src="@drawable/custom_img_space"/>
+            android:text="M"/>
         <Button android:id="@+id/button_enter"
             style="@style/ImageButton"
             android:text="Enter"/>

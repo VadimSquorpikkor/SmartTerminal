@@ -22,9 +22,11 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isBtConnected;
 
     private final MutableLiveData<String> requestText;
-    private final MutableLiveData<String> response;
+//    private final MutableLiveData<String> response;
 
     private BluetoothHelper bluetoothHelper;
+
+    private MutableLiveData<ArrayList<String>> allCommandsList;
 
     public MainViewModel() {
         this.btPairedDeviceList = new MutableLiveData<>();
@@ -33,9 +35,20 @@ public class MainViewModel extends ViewModel {
         this.isBtSearch         = new MutableLiveData<>(false);
         this.isBtConnected      = new MutableLiveData<>(false);
         this.requestText = new MutableLiveData<>("");
-        this.response           = new MutableLiveData<>("");
+//        this.response           = new MutableLiveData<>("");
+        this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
+//        this.response.observeForever(this::updateReceivingList);
     }
 
+    public MutableLiveData<ArrayList<String>> getAllCommandsList() {
+        return allCommandsList;
+    }
+
+    private void updateReceivingList(String s) {
+        ArrayList<String> list = allCommandsList.getValue();
+        list.add(s);
+        allCommandsList.setValue(list);
+    }
 
     public BluetoothHelper getBluetoothHelper() {
         return bluetoothHelper;
@@ -43,15 +56,22 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<String> getRequestText() {
         return requestText;
     }
-    public MutableLiveData<String> getResponse() {
-        return response;
-    }
+//    public MutableLiveData<String> getResponse() {
+//        return response;
+//    }
+
+    //0x50 0x04 0x00 0x0d 0x00 0x03
 
     public void sendCommand() {
+        updateReceivingList(">> "+requestText.getValue());
         byte[] byteCommand = HexTranslate.hexStringToByteArray(stringCommand);
-        //[80, 4, 0, 13, 0, 3, 44, 73]
-        //[80, 4, 0, 13, 0, 3, 73, 44]
-        try {AnyCommand.getInstance().execute(bluetoothHelper.getAdapter(), byteCommand, true, response);}//new byte[]{0x50, 0x04, 0x00, 0x0d, 0x00, 0x03}
+        try {
+            new AnyCommand() {
+                @Override
+                public void onResponse(byte[] response) {
+                    updateReceivingList("<< "+HexTranslate.byteArrayToHexString(response));
+                }
+            }.execute(bluetoothHelper.getAdapter(), byteCommand, true);}
         catch (ConnectingException | ResponseException e) {e.printStackTrace();}
     }
 
@@ -128,14 +148,25 @@ public class MainViewModel extends ViewModel {
         unregisterReceiver();
         bluetoothHelper = null;
         //bound = false;
-//        System.exit(0);
+        System.exit(0);
     }
 
     private String stringCommand = "";
 
     public void addNumber(String n) {
         stringCommand += n;
-        requestText.setValue(">>"+stringCommand);
+//        if (stringCommand.length()%2==0) stringCommand+=" ";
+        requestText.setValue(convertStringToLooksLikeCommand(stringCommand));
+    }
+
+    private String convertStringToLooksLikeCommand(String s) {
+        if (s.length()<3) return s;
+        String out = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (i%2==0&&i!=0) out+=" "+s.charAt(i);
+            else out+=s.charAt(i);
+        }
+        return out;
     }
 
     public void clearText() {

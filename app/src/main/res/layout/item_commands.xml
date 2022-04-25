@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/vertical">
+
+    <LinearLayout style="@style/horizontal">
+
+        <TextView
+            android:id="@+id/comm"
+            tools:text=">> 05 00 04 04"
+            android:gravity="start"
+            style="@style/ordinary_text_weight" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+</LinearLayout>
