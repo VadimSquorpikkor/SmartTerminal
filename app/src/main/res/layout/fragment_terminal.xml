@@ -13,13 +13,32 @@
         android:background="@drawable/shape_main_background"
         android:orientation="vertical">
 
+        <LinearLayout style="@style/horizontal" android:layout_marginHorizontal="10dp">
 
         <TextView
             style="@style/text_small"
             android:id="@+id/connected_name"
             tools:text="подключено"
-            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:gravity="start"
             />
+
+            <ImageView
+                android:id="@+id/red_light"
+                android:layout_gravity="center_vertical|end"
+                android:layout_width="25dp"
+                android:layout_height="3dp"
+                android:background="@color/red"
+                />
+            <ImageView
+                android:id="@+id/green_light"
+                android:layout_gravity="center_vertical|end"
+                android:layout_width="25dp"
+                android:layout_height="3dp"
+                android:background="@color/main_green"
+                />
+
+        </LinearLayout>
 
         <LinearLayout
             style="@style/horizontal"
@@ -57,16 +76,27 @@
 
         </LinearLayout>
 
-        <TextView android:id="@+id/input"
-            android:background="?attr/dialogBackground2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="4dp"
-            android:padding="3dp"
-            tools:text="50 04 00 0d 00 03"
-            android:textSize="15dp"
-            />
+        <LinearLayout style="@style/horizontal" android:layout_marginHorizontal="8dp" android:layout_marginTop="4dp" android:background="?attr/dialogBackground2">
+
+            <TextView android:id="@+id/input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="3dp"
+                tools:text="50 04 00 0d 00 03"
+                android:textSize="15dp"
+                />
+
+            <ImageView
+                android:id="@+id/show_error_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_error"
+                android:layout_gravity="center"
+                android:layout_marginEnd="3dp"
+                />
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/basic_nuc_recycler"

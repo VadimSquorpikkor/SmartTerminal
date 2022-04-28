@@ -16,6 +16,9 @@
     <attr name="customButtonImageColor" format="color"/>
     <attr name="customButtonPressed" format="color"/>
     <attr name="customButtonTextColor" format="color"/>
+    <attr name="customButtonStrokeColor" format="color"/>
+    <attr name="customButtonGradientStart" format="color"/>
+    <attr name="customButtonGradientEnd" format="color"/>
 
     <attr name="tabColor" format="color"/>
     <attr name="tabBigTextColor" format="color"/>

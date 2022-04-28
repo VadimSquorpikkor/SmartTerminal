@@ -27,6 +27,9 @@
         <item name="customButtonPressed">@color/colorPrimary</item>
         <item name="customButtonImageColor">@color/white</item>
         <item name="customButtonTextColor">@color/white</item>
+        <item name="customButtonStrokeColor">@color/blueDark</item>
+        <item name="customButtonGradientStart">@color/blueNice</item>
+        <item name="customButtonGradientEnd">@color/blueLight</item>
 
         <item name="coloredText">@color/blueDark</item>
 
@@ -62,8 +65,10 @@
         <item name="android:navigationBarColor" tools:targetApi="p">@color/black</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="p">false</item>
 
-        <item name="backgroundColor">@color/colorBackground</item>
-        <item name="backgroundOutside">@color/colorPrimaryDark</item>
+<!--        <item name="backgroundColor">@color/colorBackground</item>-->
+        <item name="backgroundColor">@color/colorPrimaryDark</item>
+<!--        <item name="backgroundOutside">@color/colorPrimaryDark</item>-->
+        <item name="backgroundOutside">@color/black</item>
         <item name="ordinaryTextColor">@color/white_for_text</item>
         <item name="iconsColor">@color/colorLightGray</item>
 
@@ -85,6 +90,9 @@
         <item name="customButtonPressed">@color/main_orange</item>
         <item name="customButtonImageColor">@color/colorLightGray</item>
         <item name="customButtonTextColor">@color/colorLightGray</item>
+        <item name="customButtonStrokeColor">@color/black</item>
+        <item name="customButtonGradientStart">@color/prettyBlack</item>
+        <item name="customButtonGradientEnd">@color/colorBackground</item>
 
         <item name="coloredText">@color/main_orange</item>
 

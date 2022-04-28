@@ -7,6 +7,7 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,7 @@ public class TerminalFragment extends Fragment {
    MainViewModel mViewModel;
    TextView name;
    Vibrator vibe;
+   ImageView redLight, greenLight, errorInput;
    public static final int VIBE_TIME = 40;
 
    @Override
@@ -37,6 +39,9 @@ public class TerminalFragment extends Fragment {
       TextView input = view.findViewById(R.id.input);
 //      output = view.findViewById(R.id.output);
       name = view.findViewById(R.id.connected_name);
+      redLight = view.findViewById(R.id.red_light);
+      greenLight = view.findViewById(R.id.green_light);
+      errorInput = view.findViewById(R.id.show_error_input);
 
       view.findViewById(R.id.button_search).setOnClickListener(v -> startSearch());
 
@@ -50,6 +55,7 @@ public class TerminalFragment extends Fragment {
       mViewModel.getIsDiscovering().observe(getViewLifecycleOwner(), this::showDiscovering);
       mViewModel.getIsConnecting().observe(getViewLifecycleOwner(), this::showConnecting);
       mViewModel.IsBTConnected().observe(getViewLifecycleOwner(), this::showConnected);
+      mViewModel.getIsWrongInput().observe(getViewLifecycleOwner(), this::setWrongInput);
 
       view.findViewById(R.id.button_0).setOnClickListener(view1 -> addNumber("0"));
       view.findViewById(R.id.button_1).setOnClickListener(view1 -> addNumber("1"));
@@ -74,6 +80,10 @@ public class TerminalFragment extends Fragment {
 
 
       return view;
+   }
+
+   private void setWrongInput(boolean state) {
+      errorInput.setVisibility(state?View.VISIBLE:View.GONE);
    }
 
    int count = 0;
@@ -111,7 +121,13 @@ public class TerminalFragment extends Fragment {
    }
 
    private void showConnected(boolean state) {
+      setConnectedIndicator(state);
       if (state) name.setText("Подключен "+mViewModel.getBluetoothHelper().getDeviceName());
+   }
+
+   private void setConnectedIndicator(boolean isConnected) {
+      redLight.setVisibility(isConnected?View.GONE:View.VISIBLE);
+      greenLight.setVisibility(isConnected?View.VISIBLE:View.GONE);
    }
 
    private void showDiscovering(boolean state) {

@@ -22,6 +22,8 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isBtConnected;
     private final MutableLiveData<Boolean>  isConnecting;
 
+    private final MutableLiveData<Boolean>  isWrongInput;
+
     private final MutableLiveData<String> requestText;
 //    private final MutableLiveData<String> response;
 
@@ -38,6 +40,7 @@ public class MainViewModel extends ViewModel {
         this.isBtConnected      = new MutableLiveData<>(false);
         this.requestText        = new MutableLiveData<>("");
         this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
+        this.isWrongInput       = new MutableLiveData<>(false);
     }
 
     public MutableLiveData<ArrayList<String>> getAllCommandsList() {
@@ -59,14 +62,24 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<String> getRequestText() {
         return requestText;
     }
-//    public MutableLiveData<String> getResponse() {
+    public MutableLiveData<Boolean> getIsWrongInput() {
+        return isWrongInput;
+    }
+    //    public MutableLiveData<String> getResponse() {
 //        return response;
 //    }
 
     //0x50 0x04 0x00 0x0d 0x00 0x03
 
     public void sendCommand() {
-        if (stringCommand.equals("")||stringCommand.length()<5) return;
+        if (stringCommand.equals("")||stringCommand.length()<4) {
+            isWrongInput.setValue(true);
+            return;
+        }
+        if (stringCommand.length()%2!=0) {
+            isWrongInput.setValue(true);
+            return;
+        }
         updateReceivingList(">> "+requestText.getValue());
         byte[] byteCommand = HexTranslate.hexStringToByteArray(stringCommand);
         try {
@@ -159,6 +172,7 @@ public class MainViewModel extends ViewModel {
     private String stringCommand = "";
 
     public void addNumber(String n) {
+        isWrongInput.setValue(false);
         stringCommand += n;
 //        if (stringCommand.length()%2==0) stringCommand+=" ";
         requestText.setValue(convertStringToLooksLikeCommand(stringCommand));
