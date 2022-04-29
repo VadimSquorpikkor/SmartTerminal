@@ -10,4 +10,7 @@
     <string name="button_start_search">Искать</string>
     <string name="found_bluetooth">Найденные устройства</string>
     <string name="paired_bluetooth">Ранее подключенные устройства</string>
+    <string name="string_connected_to">Подключен %s</string>
+    <string name="searching">поиск...</string>
+    <string name="connecting">подключение... [%d]</string>
 </resources>

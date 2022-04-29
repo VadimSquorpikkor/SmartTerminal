@@ -151,14 +151,20 @@
         <item name="android:layout_height">30dp</item>
         <item name="android:textSize">15sp</item>
     </style>
+    <style name="ImageButtonCustom" parent="ImageButton">
+        <item name="android:textSize">11sp</item>
+    </style>
 <!--*********************************************************************************************-->
     <style name="RecyclerItem" parent="vertical_left">
         <item name="android:layout_marginBottom">3dp</item>
-        <item name="android:background">?attr/recyclerItemColor</item>
+<!--        <item name="android:background">?attr/recyclerItemColor</item>-->
+<!--        <item name="android:background">@drawable/button_small_shape_selector</item>-->
+        <item name="android:background">@drawable/background_small_shape_selector</item>
     </style>
 
     <style name="RecyclerItemTextBig" parent="H2_text">
         <item name="android:textColor">?attr/recyclerTextColor</item>
+
     </style>
 
     <style name="RecyclerItemTextSmall" parent="RecyclerItemTextBig">

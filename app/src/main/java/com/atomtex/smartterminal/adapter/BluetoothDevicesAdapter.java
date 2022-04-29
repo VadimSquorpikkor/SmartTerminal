@@ -1,4 +1,4 @@
-package com.atomtex.smartterminal;
+package com.atomtex.smartterminal.adapter;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.atomtex.smartterminal.R;
 
 import java.util.ArrayList;
 

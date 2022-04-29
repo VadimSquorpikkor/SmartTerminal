@@ -1,4 +1,4 @@
-package com.atomtex.smartterminal;
+package com.atomtex.smartterminal.dialog;
 
 import android.content.Context;
 import android.view.View;
@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.atomtex.smartterminal.MainActivity;
+import com.atomtex.smartterminal.MainViewModel;
 
 /**Базовый класс для диалогов. Есть варианты с ViewModel и без*/
 class BaseDialog extends DialogFragment {

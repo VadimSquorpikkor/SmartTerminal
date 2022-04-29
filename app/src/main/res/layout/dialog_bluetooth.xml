@@ -52,27 +52,24 @@
     <LinearLayout style="@style/horizontalCenter">
 
         <Button
+            style="@style/ImageButtonCustom"
             android:id="@+id/button_close"
             android:text="@string/button_close"
-            android:layout_margin="10dp"
-            style="@style/CustomButton"
-            android:background="@drawable/button_shape_selector"
+            android:layout_margin="5dp"
             />
 
         <Button
             android:id="@+id/button_stop"
             android:text="@string/button_stop_search"
-            android:layout_margin="10dp"
-            style="@style/CustomButton"
-            android:background="@drawable/button_shape_selector"
+            android:layout_margin="5dp"
+            style="@style/ImageButtonCustom"
             />
 
         <Button
             android:id="@+id/button_search"
             android:text="@string/button_start_search"
-            android:layout_margin="10dp"
-            style="@style/CustomButton"
-            android:background="@drawable/button_shape_selector"
+            android:layout_margin="5dp"
+            style="@style/ImageButtonCustom"
             />
 
     </LinearLayout>

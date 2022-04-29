@@ -1,4 +1,4 @@
-package com.atomtex.smartterminal;
+package com.atomtex.smartterminal.dialog;
 
 import android.app.Dialog;
 import android.bluetooth.BluetoothDevice;
@@ -10,6 +10,9 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.atomtex.smartterminal.adapter.BluetoothDevicesAdapter;
+import com.atomtex.smartterminal.R;
 
 public class SearchDeviceDialog extends BaseDialog{
 

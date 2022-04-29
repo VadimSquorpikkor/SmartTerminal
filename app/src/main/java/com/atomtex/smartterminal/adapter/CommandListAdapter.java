@@ -20,6 +20,26 @@ public class CommandListAdapter extends RecyclerView.Adapter<CommandListAdapter.
     public CommandListAdapter() {
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public interface OnItemLongClickListener {
+        void onItemLongClick(int position);
+    }
+    /**Лисенер, который будет возвращать позицию выбранного элемента*/
+    private OnItemClickListener onItemClickListener;
+    /**Сеттер на лисенер1*/
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+    /**Лисенер, который будет возвращать позицию выбранного элемента*/
+    private OnItemLongClickListener onItemLongClickListener;
+    /**Сеттер на лисенер2*/
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
+
     @SuppressLint("NotifyDataSetChanged")
     public void setList(ArrayList<String> list) {
         if (list==null) list = new ArrayList<>();
@@ -45,7 +65,7 @@ public class CommandListAdapter extends RecyclerView.Adapter<CommandListAdapter.
         return list.size();
     }
 
-    public static class AdapterViewHolder extends RecyclerView.ViewHolder {
+    public class AdapterViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView comm;
 
@@ -53,6 +73,14 @@ public class CommandListAdapter extends RecyclerView.Adapter<CommandListAdapter.
             super(itemView);
             comm = itemView.findViewById(R.id.comm);
 
+            //Если задан ItemClickListener, то клик по пункту списка возвращает номер позиции
+            itemView.setOnClickListener(view -> {
+                if (onItemClickListener != null) onItemClickListener.onItemClick(getAdapterPosition());
+            });
+            itemView.setOnLongClickListener(view -> {
+                if (onItemLongClickListener != null) onItemLongClickListener.onItemLongClick(getAdapterPosition());
+                return false;
+            });
         }
     }
 }

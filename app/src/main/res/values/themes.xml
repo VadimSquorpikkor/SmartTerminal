@@ -75,8 +75,8 @@
         <!---->
         <item name="dialogBigTextTitleColor">@color/white_for_text</item><!--main_orange-->
         <item name="dialogBigTextColor">@color/white_for_text</item><!--main_orange-->
-        <item name="dialogTitleColor">@color/colorPrimaryDark</item>
-        <item name="dialogBackground">@color/dark_grey</item>
+        <item name="dialogTitleColor">@color/prettyBlack</item>
+        <item name="dialogBackground">@color/colorPrimaryDark</item>
         <item name="dialogBackground2">@color/colorPrimary</item>
         <item name="dialogSmallTextColor">@color/colorLightGray</item>
         <item name="EditTextBackgroundColor">@color/colorPrimary</item>

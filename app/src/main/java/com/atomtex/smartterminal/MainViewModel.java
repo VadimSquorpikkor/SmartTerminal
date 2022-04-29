@@ -15,12 +15,16 @@ import java.util.ArrayList;
 
 public class MainViewModel extends ViewModel {
 
+    public static final String OUTER_SIGN = ">> ";
+    public static final String INNER_SIGN = "<< ";
+
     private final MutableLiveData<ArrayList<BluetoothDevice>> btPairedDeviceList;
     private final MutableLiveData<ArrayList<BluetoothDevice>> btFoundDeviceList;
     private final MutableLiveData<Boolean>  isDiscovering;
     private final MutableLiveData<Boolean>  isBtSearch;
     private final MutableLiveData<Boolean>  isBtConnected;
     private final MutableLiveData<Boolean>  isConnecting;
+    private final MutableLiveData<Integer>  shareDialog;
 
     private final MutableLiveData<Boolean>  isWrongInput;
 
@@ -41,6 +45,7 @@ public class MainViewModel extends ViewModel {
         this.requestText        = new MutableLiveData<>("");
         this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
         this.isWrongInput       = new MutableLiveData<>(false);
+        this.shareDialog        = new MutableLiveData<>(-1);
     }
 
     public MutableLiveData<ArrayList<String>> getAllCommandsList() {
@@ -65,6 +70,9 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Boolean> getIsWrongInput() {
         return isWrongInput;
     }
+    public MutableLiveData<Integer> getShareDialog() {
+        return shareDialog;
+    }
     //    public MutableLiveData<String> getResponse() {
 //        return response;
 //    }
@@ -80,13 +88,13 @@ public class MainViewModel extends ViewModel {
             isWrongInput.setValue(true);
             return;
         }
-        updateReceivingList(">> "+requestText.getValue());
+        updateReceivingList(OUTER_SIGN+requestText.getValue());
         byte[] byteCommand = HexTranslate.hexStringToByteArray(stringCommand);
         try {
             new AnyCommand() {
                 @Override
                 public void onResponse(byte[] response) {
-                    updateReceivingList("<< "+HexTranslate.byteArrayToHexString(response));
+                    updateReceivingList(INNER_SIGN+HexTranslate.byteArrayToHexString(response));
                 }
             }.execute(bluetoothHelper.getAdapter(), byteCommand, true);}
         catch (ConnectingException | ResponseException e) {e.printStackTrace();}
@@ -191,5 +199,18 @@ public class MainViewModel extends ViewModel {
     public void clearText() {
         requestText.setValue("");
         stringCommand = "";
+    }
+
+    public void clickOnCommandList(int position) {
+        String command = allCommandsList.getValue().get(position);
+        if (command.startsWith(INNER_SIGN)) return;//ответ не нужно копировать в ввод
+        command = command.replace(OUTER_SIGN, "");
+        command = command.replace(" ", "");
+        clearText();
+        addNumber(command);
+    }
+
+    public void longClickOnCommandList(int position) {
+        shareDialog.setValue(position);
     }
 }

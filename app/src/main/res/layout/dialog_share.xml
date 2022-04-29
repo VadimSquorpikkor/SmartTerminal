@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/vertical"
+    android:background="?attr/dialogBackground"
+    android:padding="5dp">
+
+    <LinearLayout style="@style/horizontalCenter">
+
+        <Button
+            android:id="@+id/button_share"
+            style="@style/ImageButtonCustom"
+            android:drawableTop="@drawable/custom_img_share"
+            android:layout_height="wrap_content"
+            android:text="Share"
+            />
+
+        <Button
+            android:id="@+id/button_input"
+            style="@style/ImageButtonCustom"
+            android:drawableTop="@drawable/custom_img_input_2"
+            android:layout_height="wrap_content"
+            android:text="Ввод"
+            />
+
+        <Button
+            android:id="@+id/button_favorite"
+            style="@style/ImageButtonCustom"
+            android:drawableTop="@drawable/custom_img_favorite"
+            android:layout_height="wrap_content"
+            android:text="Избранное"
+            />
+
+        <Button
+            android:id="@+id/button_cancel"
+            style="@style/ImageButtonCustom"
+            android:drawableTop="@drawable/custom_img_cancel"
+            android:layout_height="wrap_content"
+            android:text="Отмена"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
