@@ -113,17 +113,27 @@
             android:layout_marginHorizontal="8dp">
 
             <CheckBox
+                android:buttonTint="?attr/CheckBoxColor"
+                android:id="@+id/check_prefix"
                 android:layout_margin="0dp"
                 android:padding="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <TextView style="@style/text_small"
+            <TextView
+                style="@style/text_small"
                 android:text="Prefix:"/>
 
-            <TextView style="@style/dialogLinearEdit"
+            <EditText
+                android:cursorVisible="false"
+                android:layout_gravity="center"
+                android:digits="0123456789ABCDEFabcdef"
+                android:gravity="center"
+                android:id="@+id/prefix"
+                style="@style/dialogLinearEdit"
                 android:layout_weight="1"
                 android:padding="0dp"
+                android:text="01"
                 android:layout_marginHorizontal="8dp"/>
 
             <CheckBox

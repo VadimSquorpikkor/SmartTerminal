@@ -32,6 +32,7 @@
         <item name="customButtonGradientEnd">@color/blueLight</item>
 
         <item name="coloredText">@color/blueDark</item>
+        <item name="CheckBoxColor">@color/blueDark</item>
 
         <item name="navBarGradient">@drawable/side_nav_bar</item>
         <item name="navMenuBackground">@color/white</item>
@@ -95,6 +96,7 @@
         <item name="customButtonGradientEnd">@color/colorBackground</item>
 
         <item name="coloredText">@color/main_orange</item>
+        <item name="CheckBoxColor">@color/colorLightGray</item>
 
         <item name="navBarGradient">@drawable/side_nav_bar_dark</item>
         <item name="navMenuBackground">@color/colorPrimary</item>

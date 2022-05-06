@@ -2,6 +2,7 @@ package com.atomtex.smartterminal;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
+import android.os.Environment;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -25,11 +26,10 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isBtConnected;
     private final MutableLiveData<Boolean>  isConnecting;
     private final MutableLiveData<Integer>  shareDialog;
-
     private final MutableLiveData<Boolean>  isWrongInput;
-
     private final MutableLiveData<String> requestText;
 //    private final MutableLiveData<String> response;
+    private final MutableLiveData<ArrayList<FavCommand>> favList;
 
     private BluetoothHelper bluetoothHelper;
 
@@ -46,6 +46,8 @@ public class MainViewModel extends ViewModel {
         this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
         this.isWrongInput       = new MutableLiveData<>(false);
         this.shareDialog        = new MutableLiveData<>(-1);
+        this.favList            = new MutableLiveData<>();
+        loadFavList();
     }
 
     public MutableLiveData<ArrayList<String>> getAllCommandsList() {
@@ -73,13 +75,18 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Integer> getShareDialog() {
         return shareDialog;
     }
+    public MutableLiveData<ArrayList<FavCommand>> getFavList() {
+        return favList;
+    }
     //    public MutableLiveData<String> getResponse() {
 //        return response;
 //    }
 
     //0x50 0x04 0x00 0x0d 0x00 0x03
 
-    public void sendCommand() {
+    public void sendCommand(String prefix) {
+        String pref = "";
+        if (prefix.length()%2==0) pref = prefix;
         if (stringCommand.equals("")||stringCommand.length()<4) {
             isWrongInput.setValue(true);
             return;
@@ -88,8 +95,9 @@ public class MainViewModel extends ViewModel {
             isWrongInput.setValue(true);
             return;
         }
-        updateReceivingList(OUTER_SIGN+requestText.getValue());
-        byte[] byteCommand = HexTranslate.hexStringToByteArray(stringCommand);
+        Log.e("TAG", "sendCommand: "+stringCommand);
+        updateReceivingList(OUTER_SIGN+pref+" "+requestText.getValue());
+        byte[] byteCommand = HexTranslate.hexStringToByteArray(pref+stringCommand);
         try {
             new AnyCommand() {
                 @Override
@@ -213,4 +221,9 @@ public class MainViewModel extends ViewModel {
     public void longClickOnCommandList(int position) {
         shareDialog.setValue(position);
     }
+
+    public void loadFavList() {
+        favList.setValue(SaveLoadFav.parseFile(Environment.getExternalStorageDirectory().getAbsolutePath()+"/Command.txt"));
+    }
+
 }

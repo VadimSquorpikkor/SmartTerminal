@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/vertical"
+    android:background="?attr/dialogBackground">
+
+    <LinearLayout
+        style="@style/vertical"
+        android:background="?attr/dialogTitleColor">
+
+        <TextView
+            style="@style/H1_text_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_favorite" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/vertical"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:minHeight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/horizontalCenter">
+
+        <Button
+            style="@style/ImageButtonCustom"
+            android:id="@+id/button_close"
+            android:text="@string/button_close"
+            android:layout_margin="5dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

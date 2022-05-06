@@ -55,4 +55,6 @@
     <attr name="spectrumNuclideLineColor" format="color"/>
 
     <attr name="EditTextBackgroundColor" format="color"/>
+    <attr name="CheckBoxColor" format="color"/>
+
 </resources>

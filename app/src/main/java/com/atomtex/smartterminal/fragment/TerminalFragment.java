@@ -6,6 +6,8 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.atomtex.smartterminal.MainViewModel;
 import com.atomtex.smartterminal.R;
 import com.atomtex.smartterminal.adapter.CommandListAdapter;
+import com.atomtex.smartterminal.dialog.FavoriteListDialog;
 import com.atomtex.smartterminal.dialog.SearchDeviceDialog;
 import com.atomtex.smartterminal.dialog.ShareCommandDialog;
 
@@ -27,6 +30,8 @@ public class TerminalFragment extends Fragment {
    }
    MainViewModel mViewModel;
    TextView name;
+   CheckBox checkPrefix;
+   EditText editPrefix;
    Vibrator vibe;
    ImageView redLight, greenLight, errorInput;
    public static final int VIBE_TIME = 40;
@@ -45,6 +50,8 @@ public class TerminalFragment extends Fragment {
       redLight = view.findViewById(R.id.red_light);
       greenLight = view.findViewById(R.id.green_light);
       errorInput = view.findViewById(R.id.show_error_input);
+      checkPrefix = view.findViewById(R.id.check_prefix);
+      editPrefix = view.findViewById(R.id.prefix);
 
       view.findViewById(R.id.button_search).setOnClickListener(v -> startSearch());
 
@@ -118,12 +125,13 @@ public class TerminalFragment extends Fragment {
 
    private void send() {
       vibe.vibrate(VIBE_TIME);
-      mViewModel.sendCommand();
+      if (checkPrefix.isChecked()) mViewModel.sendCommand(editPrefix.getText().toString());
+      else mViewModel.sendCommand("");
    }
 
    private void memory() {
       vibe.vibrate(VIBE_TIME);
-
+      new FavoriteListDialog().show(getParentFragmentManager(), null);
    }
 
    private void back() {

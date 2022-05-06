@@ -13,4 +13,5 @@
     <string name="string_connected_to">Подключен %s</string>
     <string name="searching">поиск...</string>
     <string name="connecting">подключение... [%d]</string>
+    <string name="title_favorite">Избранное</string>
 </resources>
