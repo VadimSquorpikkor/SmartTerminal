@@ -95,8 +95,7 @@ public class MainViewModel extends ViewModel {
             isWrongInput.setValue(true);
             return;
         }
-        Log.e("TAG", "sendCommand: "+stringCommand);
-        updateReceivingList(OUTER_SIGN+pref+" "+requestText.getValue());
+        updateReceivingList(OUTER_SIGN+(pref.equals("")?"":pref+" ")+requestText.getValue());
         byte[] byteCommand = HexTranslate.hexStringToByteArray(pref+stringCommand);
         try {
             new AnyCommand() {
