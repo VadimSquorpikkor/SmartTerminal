@@ -1,8 +1,15 @@
 package com.atomtex.smartterminal.fragment;
 
+import static com.atomtex.smartterminal.App.TAG;
+import static com.atomtex.smartterminal.fileexplorer.ExplorerViewModel.EXTRA_EXTENSION_LIST;
+import static com.atomtex.smartterminal.fileexplorer.ExplorerViewModel.KEY_FILE_SELECTED;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,22 +28,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.atomtex.smartterminal.MainViewModel;
 import com.atomtex.smartterminal.R;
 import com.atomtex.smartterminal.adapter.CommandListAdapter;
+import com.atomtex.smartterminal.dialog.CommandFileDialog;
 import com.atomtex.smartterminal.dialog.FavoriteListDialog;
 import com.atomtex.smartterminal.dialog.SearchDeviceDialog;
 import com.atomtex.smartterminal.dialog.ShareCommandDialog;
+import com.atomtex.smartterminal.fileexplorer.ExplorerActivity;
 
 public class TerminalFragment extends Fragment {
 
    public static TerminalFragment newInstance() {
       return new TerminalFragment();
    }
-   MainViewModel mViewModel;
-   TextView name;
-   CheckBox checkPrefix;
-   EditText editPrefix;
-   Vibrator vibe;
-   ImageView redLight, greenLight, errorInput;
+
+   private MainViewModel mViewModel;
+   private TextView name;
+   private CheckBox checkPrefix;
+   private EditText editPrefix;
+   private Vibrator vibe;
+   private ImageView redLight, greenLight, errorInput;
    public static final int VIBE_TIME = 40;
+   private ActivityResultLauncher<Intent> getFileLauncher;
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -90,9 +103,43 @@ public class TerminalFragment extends Fragment {
       view.findViewById(R.id.button_back).setOnClickListener(view1 -> back());
       view.findViewById(R.id.button_mem).setOnClickListener(view1 -> memory());
       view.findViewById(R.id.button_enter).setOnClickListener(v -> send());
+      view.findViewById(R.id.button_open).setOnClickListener(v -> openCommandFile());
 
+      /**Лаунчер для внутреннего проводника. Метод getFolder или getFile открывает проводник,
+       * который возвращает путь выбранного в проводнике файла. Для назначения действия
+       * переопределить метод pathReturnListener*/
+      getFileLauncher = registerForActivityResult(
+              new ActivityResultContracts.StartActivityForResult(),
+              result -> {
+                 if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    String path = "";
+                    if (data!=null) path = data.getStringExtra(KEY_FILE_SELECTED);
+                    pathReturnListener(path);
+                 }
+              });
 
       return view;
+   }
+
+   /**Запуск внутреннего проводника для получения пути выбранного файла. Можно задать расширение
+    *  (расширения), файлы с которыми будут отображаться в проводнике. Для отображения всех файлов
+    *  использовать метод без параметров или ввести null*/
+   public void getFile(String... ext) {
+      Intent intent = new Intent(requireActivity(), ExplorerActivity.class);
+      intent.putExtra(EXTRA_EXTENSION_LIST, ext);
+      getFileLauncher.launch(intent);
+   }
+
+   public void pathReturnListener(String path) {
+      Log.e(TAG, "pathReturnListener: "+path);
+      mViewModel.loadCommandList(path);
+      new CommandFileDialog().show(getParentFragmentManager(), null);
+   }
+
+   private void openCommandFile() {
+      vibe.vibrate(VIBE_TIME);
+      getFile("txt");
    }
 
    private void longClick(int position) {

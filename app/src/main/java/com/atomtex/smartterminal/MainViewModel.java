@@ -2,7 +2,6 @@ package com.atomtex.smartterminal;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
-import android.os.Environment;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -29,7 +28,8 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isWrongInput;
     private final MutableLiveData<String> requestText;
 //    private final MutableLiveData<String> response;
-    private final MutableLiveData<ArrayList<FavCommand>> favList;
+    private final MutableLiveData<ArrayList<FavCommand>> commandList;
+    private final MutableLiveData<ArrayList<FavCommand>> savedList;
 
     private BluetoothHelper bluetoothHelper;
 
@@ -46,8 +46,8 @@ public class MainViewModel extends ViewModel {
         this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
         this.isWrongInput       = new MutableLiveData<>(false);
         this.shareDialog        = new MutableLiveData<>(-1);
-        this.favList            = new MutableLiveData<>();
-        loadFavList();
+        this.commandList        = new MutableLiveData<>();
+        this.savedList          = new MutableLiveData<>();
     }
 
     public MutableLiveData<ArrayList<String>> getAllCommandsList() {
@@ -75,8 +75,11 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Integer> getShareDialog() {
         return shareDialog;
     }
-    public MutableLiveData<ArrayList<FavCommand>> getFavList() {
-        return favList;
+    public MutableLiveData<ArrayList<FavCommand>> getCommandList() {
+        return commandList;
+    }
+    public MutableLiveData<ArrayList<FavCommand>> getSavedList() {
+        return savedList;
     }
     //    public MutableLiveData<String> getResponse() {
 //        return response;
@@ -107,7 +110,7 @@ public class MainViewModel extends ViewModel {
         catch (ConnectingException | ResponseException e) {e.printStackTrace();}
     }
 
-    //---------------------- BLUETOOTH -----------------------------------------------------------------
+//---------------------- BLUETOOTH -----------------------------------------------------------------
     /**Запуск поиска устройств bluetooth. Можно в фильтре указать имена устройств, которые будут
      * отображаться в результате поиска, все устройства, в имени которых не содержатся такие строки,
      * будут игнорироваться. Если ничего не выбрано — отображаются все найденные устройства*/
@@ -221,8 +224,8 @@ public class MainViewModel extends ViewModel {
         shareDialog.setValue(position);
     }
 
-    public void loadFavList() {
-        favList.setValue(SaveLoadFav.parseFile(Environment.getExternalStorageDirectory().getAbsolutePath()+"/Command.txt"));
+    public void loadCommandList(String path) {
+        commandList.setValue(SaveLoadFav.parseFile(path));
     }
 
 }

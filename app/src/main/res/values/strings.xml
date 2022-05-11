@@ -14,4 +14,14 @@
     <string name="searching">поиск...</string>
     <string name="connecting">подключение... [%d]</string>
     <string name="title_favorite">Избранное</string>
+
+    <string name="app_folder">App Folder</string>
+    <string name="storage">Storage</string>
+    <string name="sd_card">SD</string>
+    <string name="new_folder">NewFolder</string>
+    <string name="zip">Zip</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
+    <string name="dir_read_only_msg">Эта папка только для чтения и не может быть выбрана для записи</string>
+    <string name="select_this_folder">Выбрать эту папку</string>
 </resources>

@@ -6,6 +6,7 @@
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/background_small_shape.xml" value="0.1705" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/background_small_shape_pressed.xml" value="0.1705" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/background_small_shape_selector.xml" value="0.1705" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/baseline_arrow_back_24.xml" value="0.185" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_dark_gradient.xml" value="0.273" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_gradient.xml" value="0.273" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/button_shape.xml" value="0.185" />
@@ -29,19 +30,27 @@
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_vibro_off.xml" value="0.3195" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_vibro_on.xml" value="0.3195" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/edit_text_field.xml" value="0.356" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_baseline_check_box_24.xml" value="0.185" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_baseline_folder_open_24.xml" value="0.184" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2635" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_baseline_insert_drive_file_24.xml" value="0.185" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1555" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/shape_main_background.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/side_nav_bar.xml" value="0.356" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/side_nav_bar_dark.xml" value="0.356" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/activity_explorer.xml" value="0.3546875" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/buttons.xml" value="0.33" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_bluetooth.xml" value="0.34923076923076923" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_favorite.xml" value="0.3546875" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_share.xml" value="0.27314814814814814" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_explorer.xml" value="0.22" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_terminal.xml" value="0.33" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/inc_ok_cancel_buttons.xml" value="0.3546875" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/item_bt_found.xml" value="0.34923076923076923" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/item_commands.xml" value="0.22" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/item_favorite.xml" value="0.3546875" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/item_file_explorer.xml" value="0.1765625" />
       </map>
     </option>
   </component>
