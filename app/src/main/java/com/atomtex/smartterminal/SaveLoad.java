@@ -6,8 +6,7 @@ import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 
-/**Версия 3.0*/
-@SuppressWarnings("unused")
+/**Версия 3.02*/
 public class SaveLoad {
 
     static SharedPreferences mPrefPrivate = App.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -53,6 +52,11 @@ public class SaveLoad {
         if (mPrefPrivate.contains(key)) return mPrefPrivate.getBoolean(key, false);
         return false;
     }
+    /**Загрузка boolean по ключу. Задать значение по умолчанию*/
+    public static boolean loadBoolean(String key, boolean defValue) {
+        if (mPrefPrivate.contains(key)) return mPrefPrivate.getBoolean(key, defValue);
+        return defValue;
+    }
     /**Сохранение массива по ключу*/
     public static void saveArray(String key, ArrayList<String> list) {
         SharedPreferences.Editor editor = mPrefPrivate.edit();
@@ -91,7 +95,8 @@ public class SaveLoad {
         return mPrefManager;
     }
 
-    public static void savePref(String key, String param) {
+    public static void savePref(int keyId, String param) {
+        String key = App.getContext().getString(keyId);
         mPrefManager.edit().putString(key, param).apply();
     }
 
@@ -143,4 +148,13 @@ public class SaveLoad {
         return "";
     }
 
+    /**Загрузка настройки String, заданной через preferenceActivity, по ключу из resId
+     * с возможность задать значение по умолчанию. Значение по умолчанию — это тоже resId,
+     * а НЕ САМО ЗНАЧЕНИЕ!*/
+    public static String getPrefString(int resId, int defValueId) {
+        String key = App.getContext().getString(resId);
+        String defValue = App.getContext().getString(defValueId);
+        if (mPrefManager.contains(key)) return mPrefManager.getString(key, defValue);
+        return defValue;
+    }
 }

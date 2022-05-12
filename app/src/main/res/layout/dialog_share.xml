@@ -31,12 +31,20 @@
             />
 
         <Button
+            android:id="@+id/button_copy"
+            style="@style/ImageButtonCustom"
+            android:drawableTop="@drawable/custom_img_copy"
+            android:layout_height="wrap_content"
+            android:text="Copy"
+            />
+
+        <!--<Button
             android:id="@+id/button_cancel"
             style="@style/ImageButtonCustom"
             android:drawableTop="@drawable/custom_img_cancel"
             android:layout_height="wrap_content"
             android:text="Отмена"
-            />
+            />-->
 
     </LinearLayout>
 

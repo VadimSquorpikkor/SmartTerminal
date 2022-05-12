@@ -196,6 +196,13 @@ public class MainViewModel extends ViewModel {
         requestText.setValue(convertStringToLooksLikeCommand(stringCommand));
     }
 
+    public void doBackspace() {
+        if (stringCommand.length()<1) return;
+        isWrongInput.setValue(false);
+        stringCommand = stringCommand.substring(0, stringCommand.length()-1);
+        requestText.setValue(convertStringToLooksLikeCommand(stringCommand));
+    }
+
     private String convertStringToLooksLikeCommand(String s) {
         if (s.length()<3) return s;
         String out = "";
@@ -225,7 +232,11 @@ public class MainViewModel extends ViewModel {
     }
 
     public void loadCommandList(String path) {
+        SaveLoad.savePref(R.string.pref_command_path, path);
         commandList.setValue(SaveLoadFav.parseFile(path));
     }
 
+    public void setAutoOpenFile(boolean open) {
+        SaveLoad.savePref(R.string.pref_command_load, open);
+    }
 }

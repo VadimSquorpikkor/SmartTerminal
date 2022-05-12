@@ -20,10 +20,10 @@ public class ShareCommandDialog extends BaseDialog {
 
         int position = mViewModel.getShareDialog().getValue();
 
-        view.findViewById(R.id.button_cancel).setOnClickListener(view -> {
+        /*view.findViewById(R.id.button_cancel).setOnClickListener(view -> {
             mViewModel.getShareDialog().postValue(-1);
             dismiss();
-        });
+        });*/
 
 
         return dialog;

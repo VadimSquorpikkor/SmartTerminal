@@ -17,6 +17,7 @@
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_back.xml" value="0.219" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_bluetooth.xml" value="0.3195" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_cancel.xml" value="0.1705" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_copy.xml" value="0.1255" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_day.xml" value="0.3195" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_favorite.xml" value="0.1705" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/drawable/custom_img_input.xml" value="0.1705" />
@@ -42,6 +43,7 @@
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/buttons.xml" value="0.33" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_bluetooth.xml" value="0.34923076923076923" />
+        <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_command.xml" value="0.2911500641299701" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_favorite.xml" value="0.3546875" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/dialog_share.xml" value="0.27314814814814814" />
         <entry key="..\:/GitHub/SmartTerminal/app/src/main/res/layout/fragment_explorer.xml" value="0.22" />

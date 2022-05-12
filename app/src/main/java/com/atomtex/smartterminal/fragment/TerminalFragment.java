@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.atomtex.smartterminal.MainViewModel;
 import com.atomtex.smartterminal.R;
+import com.atomtex.smartterminal.SaveLoad;
 import com.atomtex.smartterminal.adapter.CommandListAdapter;
 import com.atomtex.smartterminal.dialog.CommandFileDialog;
 import com.atomtex.smartterminal.dialog.FavoriteListDialog;
@@ -139,7 +140,8 @@ public class TerminalFragment extends Fragment {
 
    private void openCommandFile() {
       vibe.vibrate(VIBE_TIME);
-      getFile("txt");
+      if (SaveLoad.getPrefBoolean(R.string.pref_command_load)) pathReturnListener(SaveLoad.getPrefString(R.string.pref_command_path));
+      else getFile("txt");
    }
 
    private void longClick(int position) {
@@ -150,7 +152,7 @@ public class TerminalFragment extends Fragment {
    private void openShareDialog(int position) {
       if (position==-1) return;
       new ShareCommandDialog().show(getParentFragmentManager(), null);
-//      mViewModel.getShareDialog().postValue(-1);
+      mViewModel.getShareDialog().postValue(-1);
    }
 
    private void setWrongInput(boolean state) {
@@ -183,7 +185,7 @@ public class TerminalFragment extends Fragment {
 
    private void back() {
       vibe.vibrate(VIBE_TIME);
-
+      mViewModel.doBackspace();
    }
 
    private void addNumber(String n) {
