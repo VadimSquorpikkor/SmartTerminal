@@ -59,7 +59,6 @@ public class TerminalFragment extends Fragment {
       vibe = (Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
       TextView input = view.findViewById(R.id.input);
-//      output = view.findViewById(R.id.output);
       name = view.findViewById(R.id.connected_name);
       redLight = view.findViewById(R.id.red_light);
       greenLight = view.findViewById(R.id.green_light);
@@ -74,7 +73,7 @@ public class TerminalFragment extends Fragment {
       recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
       recycler.setAdapter(adapter);
       mViewModel.getAllCommandsList().observe(getViewLifecycleOwner(), adapter::setList);
-      adapter.setOnItemClickListener(position -> mViewModel.clickOnCommandList(position));
+      adapter.setOnItemClickListener(command -> mViewModel.insertCommandToInput(command));
       adapter.setOnItemLongClickListener(this::longClick);
 
       mViewModel.getRequestText().observe(getViewLifecycleOwner(), input::setText);
@@ -82,7 +81,6 @@ public class TerminalFragment extends Fragment {
       mViewModel.getIsConnecting().observe(getViewLifecycleOwner(), this::showConnecting);
       mViewModel.IsBTConnected().observe(getViewLifecycleOwner(), this::showConnected);
       mViewModel.getIsWrongInput().observe(getViewLifecycleOwner(), this::setWrongInput);
-      mViewModel.getShareDialog().observe(getViewLifecycleOwner(), this::openShareDialog);
 
       view.findViewById(R.id.button_0).setOnClickListener(view1 -> addNumber("0"));
       view.findViewById(R.id.button_1).setOnClickListener(view1 -> addNumber("1"));
@@ -106,9 +104,9 @@ public class TerminalFragment extends Fragment {
       view.findViewById(R.id.button_enter).setOnClickListener(v -> send());
       view.findViewById(R.id.button_open).setOnClickListener(v -> openCommandFile());
 
-      /**Лаунчер для внутреннего проводника. Метод getFolder или getFile открывает проводник,
-       * который возвращает путь выбранного в проводнике файла. Для назначения действия
-       * переопределить метод pathReturnListener*/
+      //Лаунчер для внутреннего проводника. Метод getFolder или getFile открывает проводник,
+      //который возвращает путь выбранного в проводнике файла. Для назначения действия
+      //переопределить метод pathReturnListener*/
       getFileLauncher = registerForActivityResult(
               new ActivityResultContracts.StartActivityForResult(),
               result -> {
@@ -144,15 +142,9 @@ public class TerminalFragment extends Fragment {
       else getFile("txt");
    }
 
-   private void longClick(int position) {
+   private void longClick(String command) {
       vibe.vibrate(VIBE_TIME);
-      mViewModel.longClickOnCommandList(position);
-   }
-
-   private void openShareDialog(int position) {
-      if (position==-1) return;
-      new ShareCommandDialog().show(getParentFragmentManager(), null);
-      mViewModel.getShareDialog().postValue(-1);
+      ShareCommandDialog.newInstance(command).show(getParentFragmentManager(), null);
    }
 
    private void setWrongInput(boolean state) {

@@ -21,10 +21,10 @@ public class CommandListAdapter extends RecyclerView.Adapter<CommandListAdapter.
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(String command);
     }
     public interface OnItemLongClickListener {
-        void onItemLongClick(int position);
+        void onItemLongClick(String command);
     }
     /**Лисенер, который будет возвращать позицию выбранного элемента*/
     private OnItemClickListener onItemClickListener;
@@ -75,10 +75,10 @@ public class CommandListAdapter extends RecyclerView.Adapter<CommandListAdapter.
 
             //Если задан ItemClickListener, то клик по пункту списка возвращает номер позиции
             itemView.setOnClickListener(view -> {
-                if (onItemClickListener != null) onItemClickListener.onItemClick(getAdapterPosition());
+                if (onItemClickListener != null) onItemClickListener.onItemClick(list.get(getAdapterPosition()));
             });
             itemView.setOnLongClickListener(view -> {
-                if (onItemLongClickListener != null) onItemLongClickListener.onItemLongClick(getAdapterPosition());
+                if (onItemLongClickListener != null) onItemLongClickListener.onItemLongClick(list.get(getAdapterPosition()));
                 return false;
             });
         }

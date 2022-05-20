@@ -24,10 +24,8 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean>  isBtSearch;
     private final MutableLiveData<Boolean>  isBtConnected;
     private final MutableLiveData<Boolean>  isConnecting;
-    private final MutableLiveData<Integer>  shareDialog;
     private final MutableLiveData<Boolean>  isWrongInput;
-    private final MutableLiveData<String> requestText;
-//    private final MutableLiveData<String> response;
+    private final MutableLiveData<String>   requestText;
     private final MutableLiveData<ArrayList<FavCommand>> commandList;
     private final MutableLiveData<ArrayList<FavCommand>> savedList;
 
@@ -45,7 +43,6 @@ public class MainViewModel extends ViewModel {
         this.requestText        = new MutableLiveData<>("");
         this.allCommandsList    = new MutableLiveData<>(new ArrayList<>());
         this.isWrongInput       = new MutableLiveData<>(false);
-        this.shareDialog        = new MutableLiveData<>(-1);
         this.commandList        = new MutableLiveData<>();
         this.savedList          = new MutableLiveData<>();
     }
@@ -72,18 +69,12 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Boolean> getIsWrongInput() {
         return isWrongInput;
     }
-    public MutableLiveData<Integer> getShareDialog() {
-        return shareDialog;
-    }
     public MutableLiveData<ArrayList<FavCommand>> getCommandList() {
         return commandList;
     }
     public MutableLiveData<ArrayList<FavCommand>> getSavedList() {
         return savedList;
     }
-    //    public MutableLiveData<String> getResponse() {
-//        return response;
-//    }
 
     //0x50 0x04 0x00 0x0d 0x00 0x03
 
@@ -164,12 +155,9 @@ public class MainViewModel extends ViewModel {
         startConnectToLastBTDevice();
     }
 
-
     public void stopBluetoothSearch() {
         bluetoothHelper.cancelDiscovery();
     }
-
-
 
     public String getBluetoothDeviceName() {
 //        return bluetoothHelper.getDeviceName();
@@ -218,17 +206,12 @@ public class MainViewModel extends ViewModel {
         stringCommand = "";
     }
 
-    public void clickOnCommandList(int position) {
-        String command = allCommandsList.getValue().get(position);
+    public void insertCommandToInput(String command) {
         if (command.startsWith(INNER_SIGN)) return;//ответ не нужно копировать в ввод
         command = command.replace(OUTER_SIGN, "");
         command = command.replace(" ", "");
         clearText();
         addNumber(command);
-    }
-
-    public void longClickOnCommandList(int position) {
-        shareDialog.setValue(position);
     }
 
     public void loadCommandList(String path) {
