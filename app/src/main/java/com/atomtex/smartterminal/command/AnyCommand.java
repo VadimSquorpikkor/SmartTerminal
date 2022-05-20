@@ -1,8 +1,6 @@
 package com.atomtex.smartterminal.command;
 
 import android.util.Log;
-
-import com.atomtex.smartterminal.HexTranslate;
 import com.atomtex.smartterminal.exception.ConnectingException;
 import com.atomtex.smartterminal.exception.ResponseException;
 import com.atomtex.smartterminal.modbus.ModbusMessage;

@@ -8,6 +8,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +44,11 @@ public class ShareCommandDialog extends BaseDialog {
         view.findViewById(R.id.button_copy).setOnClickListener(v->copy(getCommand()));
         view.findViewById(R.id.button_paste).setOnClickListener(v->paste());
 
+        if (getStringFromClipboard()==null||
+            getStringFromClipboard().equals("")||
+            !isRightCommand(getStringFromClipboard())
+        ) view.findViewById(R.id.button_paste).setVisibility(View.GONE);
+
         return dialog;
     }
 
@@ -60,7 +67,8 @@ public class ShareCommandDialog extends BaseDialog {
     }
 
     private void favorite(String command) {
-
+        AddToFavoriteDialog.newInstance(command).show(getParentFragmentManager(), null);
+        dismiss();
     }
 
     private void input(String command) {
@@ -79,17 +87,18 @@ public class ShareCommandDialog extends BaseDialog {
 
     private void paste() {
         String command = getStringFromClipboard();
-        if (isRightCommand(command)) mViewModel.insertCommandToInput(command);
+        if (isRightCommand(command)) mViewModel.insertCommandToInput(command);//не нужно, если команда неправильная, то  кнопка вообще не будет отображаться
         dismiss();
     }
 
     private boolean isRightCommand(String command) {
-        return true;
+        if (command==null) return false;
+        Log.e("TAG", "isRightCommand: [a-fA-F0-9\\s<>]* \""+command+"\" = "+command.matches("[a-fA-F0-9\\s<>]*"));
+        return command.matches("[a-fA-F0-9\\s<>]*");
     }
 
     private String getStringFromClipboard() {
         ClipboardManager clipboard = (ClipboardManager) requireActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        String pasteData = "";
         // If it does contain data, decide if you can handle the data.
         if (!(clipboard.hasPrimaryClip())) return null;
         // since the clipboard has data but it is not plain text

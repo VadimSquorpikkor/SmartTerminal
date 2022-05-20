@@ -1,5 +1,7 @@
 package com.atomtex.smartterminal;
 
+import static com.atomtex.smartterminal.TerminalUtils.convertStringToLooksLikeCommand;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.util.Log;
@@ -33,6 +35,8 @@ public class MainViewModel extends ViewModel {
 
     private MutableLiveData<ArrayList<String>> allCommandsList;
 
+    private final Data data;
+
     public MainViewModel() {
         this.btPairedDeviceList = new MutableLiveData<>();
         this.btFoundDeviceList  = new MutableLiveData<>();
@@ -45,10 +49,16 @@ public class MainViewModel extends ViewModel {
         this.isWrongInput       = new MutableLiveData<>(false);
         this.commandList        = new MutableLiveData<>();
         this.savedList          = new MutableLiveData<>();
+        this.data               = new Data(savedList);
+        this.data.loadAllCommands();
     }
 
     public MutableLiveData<ArrayList<String>> getAllCommandsList() {
         return allCommandsList;
+    }
+
+    public Data getData() {
+        return data;
     }
 
     private void updateReceivingList(String s) {
@@ -189,16 +199,6 @@ public class MainViewModel extends ViewModel {
         isWrongInput.setValue(false);
         stringCommand = stringCommand.substring(0, stringCommand.length()-1);
         requestText.setValue(convertStringToLooksLikeCommand(stringCommand));
-    }
-
-    private String convertStringToLooksLikeCommand(String s) {
-        if (s.length()<3) return s;
-        String out = "";
-        for (int i = 0; i < s.length(); i++) {
-            if (i%2==0&&i!=0) out+=" "+s.charAt(i);
-            else out+=s.charAt(i);
-        }
-        return out;
     }
 
     public void clearText() {
