@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/vertical"
     android:background="?attr/dialogBackground"
     android:padding="5dp">
 
+    <TextView android:id="@+id/command" style="@style/H2_text" tools:text="12 34 56"/>
+
     <LinearLayout style="@style/horizontalCenter">
+
 
         <Button
             android:id="@+id/button_share"
@@ -27,7 +31,7 @@
             style="@style/ImageButtonCustom"
             android:drawableTop="@drawable/custom_img_favorite"
             android:layout_height="wrap_content"
-            android:text="Избранное"
+            android:text="Favorite"
             />
 
         <Button
@@ -36,6 +40,14 @@
             android:drawableTop="@drawable/custom_img_copy"
             android:layout_height="wrap_content"
             android:text="Copy"
+            />
+
+        <Button
+            android:id="@+id/button_paste"
+            style="@style/ImageButtonCustom"
+            android:drawableTop="@drawable/custom_img_paste"
+            android:layout_height="wrap_content"
+            android:text="Paste"
             />
 
         <!--<Button

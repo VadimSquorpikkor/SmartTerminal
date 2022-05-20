@@ -104,6 +104,11 @@ public class TerminalFragment extends Fragment {
       view.findViewById(R.id.button_enter).setOnClickListener(v -> send());
       view.findViewById(R.id.button_open).setOnClickListener(v -> openCommandFile());
 
+      input.setOnLongClickListener(view12 -> {
+         longClick(input.getText().toString());
+         return false;
+      });
+
       //Лаунчер для внутреннего проводника. Метод getFolder или getFile открывает проводник,
       //который возвращает путь выбранного в проводнике файла. Для назначения действия
       //переопределить метод pathReturnListener*/

@@ -207,6 +207,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void insertCommandToInput(String command) {
+        if (command==null) return;
         if (command.startsWith(INNER_SIGN)) return;//ответ не нужно копировать в ввод
         command = command.replace(OUTER_SIGN, "");
         command = command.replace(" ", "");
